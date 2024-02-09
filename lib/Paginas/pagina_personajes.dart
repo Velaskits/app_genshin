@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
-class PaginaInicial extends StatelessWidget {
-  const PaginaInicial({super.key});
+class pagina_personajes extends StatelessWidget {
+  final int selectedImageId;
+
+  const pagina_personajes({Key? key, required this.selectedImageId}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -12,38 +14,92 @@ class PaginaInicial extends StatelessWidget {
       body: Padding(
         padding: EdgeInsets.all(8.0),
         child: Container(
-          width: MediaQuery.of(context).size.width, // Ancho máximo disponible
-          height: 800, // Altura deseada
+          width: MediaQuery.of(context).size.width,
+          height: 800,
           child: ListView(
             scrollDirection: Axis.vertical,
-            children: [
-              Row(
-                children: [
-                  _buildImage('assets/Yoimiya.png'),
-                  _buildImage('assets/HoTao.png'),
-                ],
-              ),
-              Row(
-                children: [
-
-                  _buildImage('assets/Nahida.png'),
-                ],
-              ),
-            ],
+            children: _buildRows(selectedImageId),
           ),
         ),
       ),
     );
   }
 
-  Widget _buildImage(String imagePath) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Image.asset(
-        imagePath,
-        width: 500, // Tamaño ajustable según sea necesario
-        height: 500,
-      ),
+  List<Widget> _buildRows(int selectedImageId) {
+    List<Widget> rows = [];
+
+    // Define las imágenes según la ID seleccionada
+    if (selectedImageId == 1) {
+      rows.addAll([
+        Row(
+          children: [
+            _personajes('assets/Personajes/Yoimiya.png'),
+          ],
+        ),
+      ]);
+    } else if (selectedImageId == 2){
+        rows.addAll([
+        Row(
+          children: [
+            _personajes('assets/Personajes/Furina.png'),
+          ],
+        ),
+      ]);
+    } else if (selectedImageId == 3){
+      rows.addAll([
+        Row(
+          children: [
+            _personajes('assets/Personajes/Nvaia.png'),
+          ],
+        ),
+      ]);
+    } else if (selectedImageId == 4){
+      rows.addAll([
+        Row(
+          children: [
+            _personajes('assets/Personajes/Shohun.png'),
+          ],
+        ),
+      ]);
+    } else if (selectedImageId == 5){
+      rows.addAll([
+        Row(
+          children: [
+            _personajes('assets/Personajes/Nahida.png'),
+          ],
+        ),
+      ]);
+    } else if (selectedImageId == 6){
+      rows.addAll([
+        Row(
+          children: [
+            _personajes('assets/Personajes/Ayaka.png'),
+          ],
+        ),
+      ]);
+    } else if (selectedImageId == 7){
+      rows.addAll([
+        Row(
+          children: [
+            _personajes('assets/Personajes/Xianyun.png'),
+          ],
+        ),
+      ]);
+    } else {
+      // Si la ID no coincide con ninguna, puedes mostrar un mensaje o dejar la lista vacía
+      rows.add(const Center(
+        child: Text('No se encontraron personajes para la ID seleccionada'),
+      ));
+    }
+
+    return rows;
+  }
+
+  Widget _personajes(String imagePath) {
+    return Image.asset(
+      imagePath,
+      width: 500,
+      height: 500,
     );
   }
 }
