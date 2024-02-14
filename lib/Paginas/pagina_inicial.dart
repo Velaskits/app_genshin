@@ -78,7 +78,7 @@ class PaginaInicial extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => pagina_armas(),
+            builder: (context) => pagina_armas(selectedImageId: item["id"]),
           ),
         );
       },
