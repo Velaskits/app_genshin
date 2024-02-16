@@ -3,7 +3,7 @@ import 'package:app_genshin/Paginas/pagina_armas.dart';
 import 'package:app_genshin/Paginas/pagina_personajes.dart';
 
 class PaginaInicial extends StatelessWidget {
-  const PaginaInicial({Key? key});
+  const PaginaInicial({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -25,28 +25,27 @@ class PaginaInicial extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Genshin Impact Inicio"),
+        
       ),
-      body: Container(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                for (var item in imageList.sublist(0, 7))
-                  _buildElementos(context, item),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                for (var item in imageList.sublist(7, 12))
-                  _buildArmas(context, item),
-              ],
-            ),
-          ],
-        ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              for (var item in imageList.sublist(0, 7))
+                _buildElementos(context, item),
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              for (var item in imageList.sublist(7, 12))
+                _buildArmas(context, item),
+            ],
+          ),
+        ],
       ),
     );
   }

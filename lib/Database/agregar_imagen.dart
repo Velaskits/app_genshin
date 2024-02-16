@@ -6,11 +6,6 @@ class BaseDeDatosAppGenchin {
 
   final boxImagenes = Hive.box("images");
 
-
-  void crgarDatos(){
-    listaImagenes = boxImagenes.get("images");
-  }
-
   void guardarDatos(){
     boxImagenes.put(1, listaImagenes);
   }
